@@ -248,11 +248,10 @@ import UIKit
         return titles.map {
             let statusLabelText: NSString = $0 as NSString
             let size = CGSize(width: width, height: height - totalInsetSize)
-            let dic = NSDictionary(object: titleFont,
-                                   forKey: NSFontAttributeName as NSCopying)
+            let dic: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: titleFont]
             let strSize = statusLabelText.boundingRect(with: size,
                                                        options: .usesLineFragmentOrigin,
-                                                       attributes: dic as? [String : AnyObject],
+                                                       attributes: dic,
                                                        context: nil).size
             return strSize.width
         }
@@ -388,7 +387,7 @@ import UIKit
                            delay: 0.0,
                            usingSpringWithDamping: bouncesOnChange ? Animation.springDamping : 1.0,
                            initialSpringVelocity: 0.0,
-                           options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseOut],
+                           options: [UIView.AnimationOptions.beginFromCurrentState, UIView.AnimationOptions.curveEaseOut],
                            animations: {
                             () -> Void in
                             self.moveIndicatorView()

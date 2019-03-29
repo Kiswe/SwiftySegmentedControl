@@ -57,7 +57,7 @@ extension ViewController {
     }
     
     // MARK: - Action handlers
-    func navigationSegmentedControlValueChanged(_ sender: SwiftySegmentedControl) {
+    @objc func navigationSegmentedControlValueChanged(_ sender: SwiftySegmentedControl) {
         if sender.index == 0 {
             print("Turning lights on.")
             view.backgroundColor = .white
